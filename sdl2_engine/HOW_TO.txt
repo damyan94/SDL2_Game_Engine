@@ -1,0 +1,5 @@
+I have included the required libraries in the dependencies.rar file.
+
+You may choose to use them or, you may use the ones you might have on your PC.
+
+Build with your favourite tool. In the future I might add a CMakeLists file.
