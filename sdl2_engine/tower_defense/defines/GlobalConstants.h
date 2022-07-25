@@ -25,7 +25,12 @@ namespace EngineConstants
 {
 	inline constexpr int32_t FPS = 50;
 	inline constexpr int32_t TIME_PER_FRAME = 1000 / FPS;
-	inline const Color RENDERER_DRAW_COLOR = Colors::VERY_DARK_CYAN;
+	inline const Color RENDERER_DRAW_COLOR = Colors::LIGHT_GREY;
+}
+
+namespace GameConstants
+{
+
 }
 
 #endif // !GLOBALCONSTANTS_H_

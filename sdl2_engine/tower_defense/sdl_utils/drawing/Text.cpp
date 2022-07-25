@@ -30,6 +30,8 @@ int32_t Text::init(const char* text, int32_t fontId, const Color& textColor)
 	standardWidth = width;
 	standardHeight = height;
 
+	rotationCenter = Point(width / 2, height / 2);
+
 	id = fontId;
 	type = ObjectType::TEXT;
 
@@ -78,9 +80,8 @@ void Text::setText(const char* newText)
 
 void Text::setColor(const Color& newColor)
 {
-	color = newColor;
 	Texture::destroyTexture(texture);
-	Texture::createTextureFromText(text.c_str(), color, FontContainer::getFontById(id), texture, width, height);
+	Texture::createTextureFromText(text.c_str(), newColor, FontContainer::getFontById(id), texture, width, height);
 	if (!texture)
 	{
 		std::cout << "Error, Texture::createTextureFromText() failed for id: " << id << std::endl;
@@ -91,6 +92,7 @@ void Text::setColor(const Color& newColor)
 	frameRect.h = height;
 	standardWidth = width;
 	standardHeight = height;
+	color = newColor;
 }
 
 std::string Text::getText() const

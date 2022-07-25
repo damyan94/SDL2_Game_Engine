@@ -11,36 +11,43 @@
 #include "sdl_utils/containers/SoundContainer.h"
 #include "sdl_utils/containers/MusicContainer.h"
 
+// Mix_PlayChannel
 void Audio::playSound(int32_t soundId, int32_t loops)
 {
 	Mix_PlayChannel(Audio::FIRST_FREE_CHANNEL, SoundContainer::getSoundById(soundId), loops);
 }
 
+// Mix_Pause
 void Audio::pauseSounds()
 {
 	Mix_Pause(ALL_CHANNELS);
 }
 
+// Mix_HaltChannel
 void Audio::stopSounds()
 {
 	Mix_HaltChannel(ALL_CHANNELS);
 }
 
+// Mix_PlayMusic
 void Audio::playMusic(int32_t musicId, int32_t loops)
 {
 	Mix_PlayMusic(MusicContainer::getMusicById(musicId), loops);
 }
 
+// Mix_PauseMusic
 void Audio::pauseMusic()
 {
 	Mix_PauseMusic();
 }
 
+// Mix_HaltMusic
 void Audio::stopMusic()
 {
 	Mix_HaltMusic();
 }
 
+// Mix_Volume
 void Audio::setSoundsVolume(uint8_t volume)
 {
 	if (volume < VOLUME_ZERO || volume > VOLUME_MAX)
@@ -52,6 +59,7 @@ void Audio::setSoundsVolume(uint8_t volume)
 	Mix_Volume(ALL_CHANNELS, volume);
 }
 
+// Mix_VolumeMusic
 void Audio::setMusicVolume(uint8_t volume)
 {
 	if (volume < VOLUME_ZERO || volume > VOLUME_MAX)
@@ -73,11 +81,13 @@ uint8_t Audio::getMusicVolume()
 	return Mix_VolumeMusic(-1);
 }
 
+// Mix_PlayingMusic
 bool Audio::playingMusic()
 {
 	return Mix_PlayingMusic();
 }
 
+// Mix_PausedMusic
 bool Audio::pausedMusic()
 {
 	return Mix_PausedMusic();

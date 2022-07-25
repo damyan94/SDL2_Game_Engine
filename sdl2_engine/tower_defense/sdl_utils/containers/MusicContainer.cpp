@@ -5,11 +5,19 @@
 #include <iostream>
 
 // Third-party includes
+#include <SDL_mixer.h>
 
 // Own includes
+#include "defines/MusicDefines.h"
 
 std::unordered_map<int32_t, Mix_Music*> MusicContainer::_musics;
 
+MusicContainer::~MusicContainer()
+{
+	deinit();
+}
+
+// Mix_LoadMUS
 int32_t MusicContainer::init()
 {
 	for (const auto& musicInfo : musicsInfo)
@@ -32,6 +40,7 @@ int32_t MusicContainer::init()
 	return EXIT_SUCCESS;
 }
 
+// Mix_FreeMusic
 void MusicContainer::deinit()
 {
 	for (auto& music : _musics)

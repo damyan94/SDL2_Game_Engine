@@ -9,7 +9,7 @@
 // Own includes
 
 const Point Point::ZERO = Point(0, 0);
-const Point Point::UNDEFINED = Point(10000, 10000);
+const Point Point::UNDEFINED = Point(100000, 100000);
 
 Point::Point(int32_t posX, int32_t posY) : x(posX), y(posY)
 {

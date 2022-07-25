@@ -14,6 +14,7 @@ namespace FontId
 {
 	enum FontIds
 	{
+		ARIAL_18 = 118,
 		ARIAL_96 = 196
 	};
 }

@@ -6,16 +6,17 @@
 #include <unordered_map>
 
 // Third-party includes
-#include <SDL_mixer.h>
 
 // Own includes
 
 // Forward declarations
-//struct Mix_Chunk;
+struct Mix_Chunk;
 
 class SoundContainer
 {
 public:
+	~SoundContainer();
+
 	int32_t init();
 	void deinit();
 

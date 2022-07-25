@@ -23,6 +23,7 @@ public:
 private:
 	Image win_xp_bliss;
 	Text greeting;
+	int32_t timerId;
 };
 
 #endif // !GAME_H_

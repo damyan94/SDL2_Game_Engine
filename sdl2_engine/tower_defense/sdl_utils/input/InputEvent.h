@@ -29,6 +29,8 @@ public:
 
 	Point pos = Point::UNDEFINED;
 
+	bool lmbHold = false;
+
 private:
 	SDL_Event* _event = nullptr;
 };

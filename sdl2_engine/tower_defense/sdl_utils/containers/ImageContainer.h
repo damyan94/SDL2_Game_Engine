@@ -17,6 +17,8 @@ struct SDL_Texture;
 class ImageContainer
 {
 public:
+	~ImageContainer();
+
 	int32_t init();
 	void deinit();
 

@@ -31,6 +31,7 @@ void InputEvent::deinit()
 	}
 }
 
+// SDL_PollEvent
 bool InputEvent::pollEvent()
 {
 	if (SDL_PollEvent(_event))
@@ -54,11 +55,15 @@ bool InputEvent::pollEvent()
 		case EventType::MOUSE_BUTTONDOWN:
 			key = Keyboard::KEY_UNKNOWN;
 			mouse = _event->button.button;
+			if (mouse == Mouse::LEFT_BUTTON)
+				lmbHold = true;
 			break;
 
 		case EventType::MOUSE_BUTTONUP:
 			key = Keyboard::KEY_UNKNOWN;
 			mouse = _event->button.button;
+			if (mouse == Mouse::LEFT_BUTTON)
+				lmbHold = false;
 			break;
 
 		case EventType::FINGER_DOWN:
@@ -75,6 +80,15 @@ bool InputEvent::pollEvent()
 			key = Keyboard::KEY_UNKNOWN;
 			mouse = Mouse::UNKNOWN;
 			wheel = _event->wheel.y;
+			break;
+
+		case EventType::MOUSE_MOTION:
+			if (lmbHold)
+			{
+				key = Keyboard::KEY_UNKNOWN;
+				mouse = Mouse::LEFT_BUTTON;
+				type = EventType::MOUSE_LMB_HOLD_MOTION;
+			}
 			break;
 
 		default:

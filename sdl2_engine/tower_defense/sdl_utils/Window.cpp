@@ -12,6 +12,7 @@
 
 SDL_Window* Window::_gWindow = nullptr;
 
+// SDL_CreateWindow
 int32_t Window::init()
 {
 	using namespace WindowConstants;
@@ -27,6 +28,7 @@ int32_t Window::init()
 	return EXIT_SUCCESS;
 }
 
+// SDL_DestroyWindow
 void Window::deinit()
 {
 	if (_gWindow)
@@ -34,21 +36,6 @@ void Window::deinit()
 		SDL_DestroyWindow(_gWindow);
 		_gWindow = nullptr;
 	}
-}
-
-void Window::handleEvent()
-{
-
-}
-
-void Window::update()
-{
-
-}
-
-void Window::draw() const
-{
-
 }
 
 SDL_Window* Window::getInstance() const

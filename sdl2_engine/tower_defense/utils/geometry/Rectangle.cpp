@@ -10,7 +10,7 @@
 #include "utils/geometry/Point.h"
 
 const Rectangle Rectangle::ZERO = Rectangle(0, 0, 0, 0);
-const Rectangle Rectangle::UNDEFINED = Rectangle(10000, 10000, 0, 0);
+const Rectangle Rectangle::UNDEFINED = Rectangle(100000, 100000, 0, 0);
 
 Rectangle::Rectangle(int32_t posX, int32_t posY, int32_t width, int32_t height) : x(posX), y(posY), w(width), h(height)
 {

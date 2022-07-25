@@ -18,6 +18,8 @@ typedef struct _TTF_Font TTF_Font;
 class FontContainer
 {
 public:
+	~FontContainer();
+
 	int32_t init();
 	void deinit();
 

@@ -6,17 +6,17 @@
 #include <unordered_map>
 
 // Third-party includes
-#include <SDL_mixer.h>
 
 // Own includes
-#include "defines/MusicDefines.h"
 
 // Forward declarations
-//typedef struct _Mix_Music Mix_Music;
+typedef struct _Mix_Music Mix_Music;
 
 class MusicContainer
 {
 public:
+	~MusicContainer();
+
 	int32_t init();
 	void deinit();
 

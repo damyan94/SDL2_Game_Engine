@@ -4,6 +4,10 @@
 // C/C++ system includes
 #include <iostream>
 
+#ifdef _WIN32
+#include <Windows.h>
+#endif
+
 // Third-party includes
 #include <SDL.h>
 #include <SDL_image.h>
@@ -14,6 +18,11 @@
 
 int32_t SDLLoader::init()
 {
+	// Hide the console on Windows
+#ifdef _WIN32
+	ShowWindow(GetConsoleWindow(), SW_HIDE);
+#endif
+
 	if (EXIT_SUCCESS != SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS | SDL_INIT_AUDIO))
 	{
 		std::cerr << "Error, SDL_Init() failed. Reason: " << SDL_GetError() << std::endl;

@@ -13,6 +13,12 @@
 
 std::unordered_map<int32_t, FontContainer::FontUnit> FontContainer::_fonts;
 
+FontContainer::~FontContainer()
+{
+	deinit();
+}
+
+// TTF_OpenFont
 int32_t FontContainer::init()
 {
 	for (const auto& fontInfo : fontsInfo)
@@ -31,12 +37,12 @@ int32_t FontContainer::init()
 			std::cout << "Error, TTF_OpenFont() failed. Reason: " << SDL_GetError() << std::endl;
 			return EXIT_FAILURE;
 		}
-
 	}
 
 	return EXIT_SUCCESS;
 }
 
+// TTF_CloseFont
 void FontContainer::deinit()
 {
 	for (auto& font : _fonts)

@@ -10,11 +10,6 @@
 #include "sdl_utils/Texture.h"
 #include "sdl_utils/containers/ImageContainer.h"
 
-Image::~Image()
-{
-	deinit();
-}
-
 int32_t Image::init(int32_t imageId)
 {
 	texture = ImageContainer::getImageTextureById(imageId);
@@ -43,7 +38,8 @@ int32_t Image::init(int32_t imageId)
 
 void Image::deinit()
 {
-	Texture::destroyTexture(texture);
+	// This would destroy the texture inside the container
+	//Texture::destroyTexture(texture);
 }
 
 void Image::draw() const

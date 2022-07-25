@@ -18,8 +18,6 @@
 class Image : public DrawObject
 {
 public:
-	~Image();
-
 	int32_t init(int32_t imageId);
 	void deinit();
 	void draw() const;

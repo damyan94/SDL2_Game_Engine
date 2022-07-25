@@ -21,7 +21,7 @@ struct ImageInfo
 // These IDs must be the same as the human readable version in the included enum
 constexpr ImageInfo imagesInfo[] = 
 {
-	{"../tower_defense/assets/images/win_xp_bliss.jpg", 1, 1}
+	{"../tower_defense/assets/images/win_xp_bliss.jpg", ImageId::WIN_XP_BLISS, 1}
 };
 
 #endif // !IMAGEDEFINES_H_

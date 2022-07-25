@@ -13,6 +13,7 @@
 
 SDL_Renderer* Renderer::_gRenderer = nullptr;
 
+// SDL_CreateRenderer
 int32_t Renderer::init(SDL_Window* window, const Color& color)
 {
 	_gRenderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
@@ -63,6 +64,7 @@ void Renderer::draw() const
 	SDL_RenderPresent(_gRenderer);
 }
 
+// SDL_SetRenderDrawColor
 void Renderer::setDrawColor(const Color& color)
 {
 	if (EXIT_SUCCESS != SDL_SetRenderDrawColor(_gRenderer, color.r, color.g, color.b, color.a))

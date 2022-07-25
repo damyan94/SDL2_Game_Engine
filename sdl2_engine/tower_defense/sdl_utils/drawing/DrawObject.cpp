@@ -9,11 +9,6 @@
 // Own includes
 #include "sdl_utils/Texture.h"
 
-DrawObject::~DrawObject()
-{
-	deinit();
-}
-
 void DrawObject::deinit()
 {
 	Texture::destroyTexture(texture);
@@ -84,12 +79,12 @@ void DrawObject::setType(ObjectType type)
 	this->type = type;
 }
 
-void DrawObject::setType(BlendMode mode)
+void DrawObject::setBlendMode(BlendMode mode)
 {
 	this->blendMode = blendMode;
 }
 
-void DrawObject::setType(FlipMode mode)
+void DrawObject::setFlipMode(FlipMode mode)
 {
 	this->flipMode = mode;
 }
@@ -186,6 +181,12 @@ void DrawObject::resize(int32_t width, int32_t height)
 	this->width = width; this->height = height;
 }
 
+void DrawObject::resize(int32_t percentage)
+{
+	this->width = this->width * percentage / 100;
+	this->height = this->height * percentage / 100;
+}
+
 void DrawObject::increaseOpacity(int32_t delta)
 {
 	this->opacity += delta;
@@ -225,7 +226,7 @@ bool DrawObject::isVisible() const
 	return visible;
 }
 
-bool DrawObject::containsPoint(const Point& point)
+bool DrawObject::containsPoint(const Point& point) const
 {
 	return Rectangle(pos.x, pos.y, width, height).isPointInside(point);
 }

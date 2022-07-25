@@ -14,19 +14,21 @@
 
 int32_t Engine::init()
 {
+	// SDL init
 	if (EXIT_SUCCESS != SDLLoader::init())
 	{
 		std::cerr << "Error, SDLLoader::init() failed." << std::endl;
 		return EXIT_FAILURE;
 	}
 	
+	// Base functionalities init
 	if (EXIT_SUCCESS != _window.init())
 	{
 		std::cerr << "Error, _window.init() failed." << std::endl;
 		return EXIT_FAILURE;
 	}
 
-	if (EXIT_SUCCESS != _renderer.init(_window.getInstance(), EngineConstants::RENDERER_DRAW_COLOR))
+	if (EXIT_SUCCESS != _renderer.init(_window.getInstance(), Colors::LIGHT_GREY/*EngineConstants::RENDERER_DRAW_COLOR*/))
 	{
 		std::cerr << "Error, _renderer.init() failed." << std::endl;
 		return EXIT_FAILURE;
@@ -38,6 +40,7 @@ int32_t Engine::init()
 		return EXIT_FAILURE;
 	}
 
+	// Containers init
 	if (EXIT_SUCCESS != _imageContainer.init())
 	{
 		std::cerr << "Error, _imageContainer.init() failed." << std::endl;
@@ -62,6 +65,7 @@ int32_t Engine::init()
 		return EXIT_FAILURE;
 	}
 
+	// Game init
 	if (EXIT_SUCCESS != _game.init())
 	{
 		std::cerr << "Error, _game.init() failed." << std::endl;
@@ -76,10 +80,12 @@ int32_t Engine::init()
 void Engine::deinit()
 {
 	_game.deinit();
+
 	_musicContainer.deinit();
 	_soundContainer.deinit();
 	_fontContainer.deinit();
 	_imageContainer.deinit();
+
 	_event.deinit();
 	_renderer.deinit();
 	_window.deinit();
@@ -106,14 +112,14 @@ void Engine::draw() const
 
 void Engine::runApplication()
 {
+	Time clock;
+
 	while (true)
 	{
-		Time clock;
-
 		while (_event.pollEvent())
 		{
-			if (_event.type == EventType::QUIT || _event.key == Keyboard::KEY_ESCAPE)
-				exit(0);
+			if (_event.type == EventType::QUIT)
+				return;
 
 			handleEvent();
 		}

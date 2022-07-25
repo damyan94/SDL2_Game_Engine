@@ -5,12 +5,19 @@
 #include <iostream>
 
 // Third-party includes
+#include <SDL_mixer.h>
 
 // Own includes
 #include "defines/SoundDefines.h"
 
 std::unordered_map<int32_t, Mix_Chunk*> SoundContainer::_sounds;
 
+SoundContainer::~SoundContainer()
+{
+	deinit();
+}
+
+// Mix_LoadWAV
 int32_t SoundContainer::init()
 {
 	for (const auto& soundInfo : soundsInfo)
@@ -33,6 +40,7 @@ int32_t SoundContainer::init()
 	return EXIT_SUCCESS;
 }
 
+// Mix_FreeChunk
 void SoundContainer::deinit()
 {
 	for (auto& sound : _sounds)

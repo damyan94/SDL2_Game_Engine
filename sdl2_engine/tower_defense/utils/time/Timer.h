@@ -33,6 +33,7 @@ public:
 	static void updateTimers();
 
 	static bool timerTicked(int32_t id);
+	static bool isActiveTimer(int32_t id);
 
 private:
 	struct TimerUnit

@@ -13,6 +13,12 @@
 
 std::unordered_map<int32_t, ImageContainer::ImageUnit> ImageContainer::_images;
 
+ImageContainer::~ImageContainer()
+{
+	deinit();
+}
+
+// Texture::createTextureFromFile
 int32_t ImageContainer::init()
 {
 	for (const auto& imageInfo : imagesInfo)
@@ -36,12 +42,13 @@ int32_t ImageContainer::init()
 
 		Texture::setTextureBlendMode(_images[id].texture, BlendMode::BLEND);
 
-		_images[imageInfo.id].framesCount = imageInfo.frames;
+		_images[id].framesCount = imageInfo.frames;
 	}
 
 	return EXIT_SUCCESS;
 }
 
+// SDL_DestroyTexture
 void ImageContainer::deinit()
 {
 	for (auto& image : _images)

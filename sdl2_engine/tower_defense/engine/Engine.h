@@ -10,6 +10,7 @@
 #include "sdl_utils/Window.h"
 #include "sdl_utils/Renderer.h"
 #include "sdl_utils/input/InputEvent.h"
+
 #include "sdl_utils/containers/ImageContainer.h"
 #include "sdl_utils/containers/FontContainer.h"
 #include "sdl_utils/containers/SoundContainer.h"

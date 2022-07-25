@@ -16,6 +16,7 @@ void Timer::startGlobalTimer()
 	_globalTime.getElapsedTime(UnitsOfTime::MILLISECONDS);
 }
 
+// The default unit of time for the timers is a millisecond
 void Timer::startTimer(int32_t id, int64_t interval, TimerType timerType)
 {
 	if (interval < TIMER_MIN_INTERVAL)
@@ -66,7 +67,7 @@ bool Timer::timerTicked(int32_t id)
 {
 	if (_timers.find(id) == _timers.end())
 	{
-		//std::cout << "Error, Timer::timerTicked() received invalid timer id: " << id << std::endl;
+		std::cout << "Error, Timer::timerTicked() received invalid timer id: " << id << std::endl;
 		return false;
 	}
 
@@ -82,4 +83,13 @@ bool Timer::timerTicked(int32_t id)
 
 	else
 		return false;
+}
+
+bool Timer::isActiveTimer(int32_t id)
+{
+	if (_timers.find(id) == _timers.end())
+		return false;
+
+	else
+		return true;
 }

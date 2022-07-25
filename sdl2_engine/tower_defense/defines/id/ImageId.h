@@ -14,7 +14,7 @@ namespace ImageId
 {
 	enum ImageIds
 	{
-		WIN_XP_BLISS = 1
+		WIN_XP_BLISS = 0
 	};
 }
 

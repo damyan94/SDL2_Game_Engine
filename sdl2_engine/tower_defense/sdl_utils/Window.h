@@ -16,9 +16,6 @@ class Window
 public:
 	int32_t init();
 	void deinit();
-	void handleEvent();
-	void update();
-	void draw() const;
 
 	SDL_Window* getInstance() const;
 

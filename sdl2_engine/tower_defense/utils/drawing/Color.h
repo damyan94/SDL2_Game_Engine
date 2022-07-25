@@ -29,20 +29,29 @@ namespace Colors
 {
 	extern const Color FULL_TRANSPARENT;
 
+	// WHITE, GREY AND BLACK
 	extern const Color WHITE;
 	extern const Color LIGHT_GREY;
 	extern const Color GREY;
 	extern const Color DARK_GREY;
 	extern const Color VERY_DARK_GREY;
 	extern const Color BLACK;
-	 
+
+	// COLORS
 	extern const Color RED;
 	extern const Color GREEN;
 	extern const Color BLUE;
 	extern const Color YELLOW;
 	extern const Color CYAN;
 	extern const Color MAGENTA;
+	extern const Color ORANGE;
+	extern const Color PINK;
+	extern const Color LIME;
+	extern const Color SPRING_GREEN;
+	extern const Color PURPLE;
+	extern const Color SKY_BLUE;
 
+	// DARK COLORS
 	extern const Color DARK_RED;
 	extern const Color DARK_GREEN;
 	extern const Color DARK_BLUE;
@@ -50,12 +59,27 @@ namespace Colors
 	extern const Color DARK_CYAN;
 	extern const Color DARK_MAGENTA;
 
+	extern const Color DARK_ORANGE;
+	extern const Color DARK_PINK;
+	extern const Color DARK_LIME;
+	extern const Color DARK_SPRING_GREEN;
+	extern const Color DARK_PURPLE;
+	extern const Color DARK_SKY_BLUE;
+
+	// VERY DARK COLORS
 	extern const Color VERY_DARK_RED;
 	extern const Color VERY_DARK_GREEN;
 	extern const Color VERY_DARK_BLUE;
 	extern const Color VERY_DARK_YELLOW;
 	extern const Color VERY_DARK_CYAN;
 	extern const Color VERY_DARK_MAGENTA;
+
+	extern const Color VERY_DARK_ORANGE;
+	extern const Color VERY_DARK_PINK;
+	extern const Color VERY_DARK_LIME;
+	extern const Color VERY_DARK_SPRING_GREEN;
+	extern const Color VERY_DARK_PURPLE;
+	extern const Color VERY_DARK_SKY_BLUE;
 }
 
 #endif // !COLOR_H_

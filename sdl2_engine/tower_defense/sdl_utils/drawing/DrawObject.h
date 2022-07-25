@@ -44,11 +44,12 @@ enum class FlipMode : uint8_t
 
 struct DrawObject
 {
-	virtual ~DrawObject();
+	virtual ~DrawObject() = default;
 
 	void deinit();
 	void reset();
 
+	// Setters
 	void setPos(int32_t x, int32_t y);
 	void setWidth(int32_t width);
 	void setHeight(int32_t height);
@@ -58,9 +59,10 @@ struct DrawObject
 	void setRotationCenter(Point rotationCenter);
 	void setId(int32_t id);
 	void setType(ObjectType type);
-	void setType(BlendMode mode);
-	void setType(FlipMode mode);
+	void setBlendMode(BlendMode mode);
+	void setFlipMode(FlipMode mode);
 
+	// Getters
 	Point getPos() const;
 	int32_t getWidth() const;
 	int32_t getHeight() const;
@@ -73,6 +75,7 @@ struct DrawObject
 	BlendMode getBlendMode();
 	FlipMode getFlipMode();
 
+	// Others
 	void moveUp(int32_t delta);
 	void moveDown(int32_t delta);
 	void moveLeft(int32_t delta);
@@ -81,6 +84,7 @@ struct DrawObject
 	void increaseWidth(int32_t delta);
 	void increaseHeight(int32_t delta);
 	void resize(int32_t width, int32_t height);
+	void resize(int32_t percentage);
 
 	void increaseOpacity(int32_t delta);
 	void setZeroOpacity();
@@ -91,7 +95,7 @@ struct DrawObject
 	void hide();
 
 	bool isVisible() const;
-	bool containsPoint(const Point& point);
+	bool containsPoint(const Point& point) const;
 
 protected:
 	Point pos = Point::UNDEFINED;

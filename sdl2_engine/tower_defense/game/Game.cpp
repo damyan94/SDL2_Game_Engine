@@ -27,6 +27,8 @@ int32_t Game::init()
 
 	greeting.setPos(textPosX, textPosY);
 
+	Timer::startTimer(timerId, 5000, TimerType::PULSE);
+
 	Audio::playMusic(MusicId::VIVALDI_SPRING_I, Audio::LOOP_INFINITELY);
 
 	return EXIT_SUCCESS;
@@ -39,13 +41,24 @@ void Game::deinit()
 
 void Game::handleEvent(const InputEvent& e)
 {
-	if (e.type == EventType::KEYBOARD_RELEASE || e.type == EventType::MOUSE_BUTTONUP)
+	if (e.type == EventType::MOUSE_BUTTONUP)
 		Audio::playSound(SoundId::CLICK, 0);
+
+	if (e.type == EventType::MOUSE_WHEEL)
+	{
+		if (e.wheel > Mouse::WHEEL_UP_DOWN_TRESHOLD)
+			greeting.rotate(10);
+
+		else
+			greeting.rotate(-10);
+	}
 }
 
 void Game::update()
 {
-
+	if (Timer::timerTicked(timerId))
+		greeting.setPos(rand() % (WindowConstants::WINDOW_WIDTH - greeting.getWidth()),
+			rand() % (WindowConstants::WINDOW_HEIGHT - greeting.getHeight()));
 }
 
 void Game::draw() const

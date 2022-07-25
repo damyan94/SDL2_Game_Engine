@@ -20,7 +20,10 @@ void Texture::createSurfaceFromFile(const char* fileName, SDL_Surface*& outSurfa
 {
 	outSurface = IMG_Load(fileName);
 	if (!outSurface)
+	{
 		std::cout << "Error, IMG_Load() failed. Reason: " << SDL_GetError() << std::endl;
+		return;
+	}
 
 	outWidth = outSurface->w;
 	outHeight = outSurface->h;
@@ -45,7 +48,10 @@ void Texture::createTextureFromSurface(SDL_Surface* surface, SDL_Texture*& outTe
 {
 	outTexture = SDL_CreateTextureFromSurface(Renderer::getInstance(), surface);
 	if (!outTexture)
+	{
 		std::cout << "Error, SDL_CreateTextureFromSurface() failed. Reason: " << SDL_GetError() << std::endl;
+		return;
+	}
 
 	outWidth = surface->w;
 	outHeight = surface->h;
@@ -56,11 +62,17 @@ void Texture::createTextureFromFile(const char* fileName, SDL_Texture*& outTextu
 	SDL_Surface* surface = nullptr;
 	createSurfaceFromFile(fileName, surface, outWidth, outHeight);
 	if (!surface)
+	{
 		std::cout << "Error, createSurfaceFromFile() failed." << std::endl;
+		return;
+	}
 
 	createTextureFromSurface(surface, outTexture, outWidth, outHeight);
 	if (!outTexture)
+	{
 		std::cout << "Error, createTextureFromSurface() failed." << std::endl;
+		return;
+	}
 
 	destroySurface(surface);
 }
@@ -70,11 +82,17 @@ void Texture::createTextureFromText(const char* text, const Color& color, TTF_Fo
 	SDL_Surface* surface = nullptr;
 	createSurfaceFromText(text, color, font, surface, outWidth, outHeight);
 	if (!surface)
+	{
 		std::cout << "Error, createSurfaceFromFile() failed." << std::endl;
+		return;
+	}
 
 	createTextureFromSurface(surface, outTexture, outWidth, outHeight);
 	if (!outTexture)
+	{
 		std::cout << "Error, createTextureFromSurface() failed." << std::endl;
+		return;
+	}
 
 	destroySurface(surface);
 }
